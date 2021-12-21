@@ -34,9 +34,7 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user)
       user.email = 'shishi.shishi'
       user.valid?
-      binding.pry
       expect(user.errors.full_messages).to include('Email is invalid')
-      binding.pry
     end
     # password
     it 'パスワードが空では登録できない' do

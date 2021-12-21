@@ -31,8 +31,10 @@ RSpec.describe User, type: :model do
       expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it 'メールアドレスに@を含まない場合は登録できない' do
-      user.email = shishi.shishi
+      user = FactoryBot.build(:user)
+      user.email = 'shishi.shishi'
       user.valid?
+      binding.pry
       expect(user.errors.full_messages).to include('Email is invalid')
       binding.pry
     end
@@ -109,9 +111,9 @@ RSpec.describe User, type: :model do
     end
     it '姓（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
       user = FactoryBot.build(:user)
-      user.last_name = '影姫かげき-1one'
+      user.last_name_kana = '影姫かげき-1one'
       user.valid?
-      expect(user.errors.full_messages).to include("お名前（カナ）は全角カタカナ")
+      expect(user.errors.full_messages).to include("Last name kana お名前（カナ）は全角カタカナ")
     end
     it '名（カナ）が空だと登録できない' do
       user = FactoryBot.build(:user)
@@ -121,7 +123,7 @@ RSpec.describe User, type: :model do
     end
     it '名（カナ）にカタカナ以外の文字（平仮名・漢字・英数字・記号）が含まれていると登録できない' do
       user = FactoryBot.build(:user)
-      user.first_name = '影姫かげき-1one'
+      user.first_name_kana = '影姫かげき-1one'
       user.valid?
       expect(user.errors.full_messages).to include("First name kana お名前（カナ）は全角カタカナ")
     end

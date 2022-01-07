@@ -131,7 +131,7 @@
       <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
        <li class='list'>
          <div class='item-img-content'>
-           <%= image_tag item.image, class: "item-img" %>
+           <%= link_to image_tag(item.image, class: "item-img"), item_path(item.id)%>
            <%# 商品が売れていればsold outを表示しましょう %>
            <div class='sold-out'>
              <span>Sold Out!!</span>
@@ -143,7 +143,7 @@
              <%= item.item_name %>
            </h3>
            <div class='item-price'>
-             <span><%= item.price %>円<br><%= item.payer_id %></span>
+             <span><%= item.price %>円<br><%= item.payer.name %></span>
              <div class='star-btn'>
                <%= image_tag "star.png", class:"star-icon" %>
                <span class='star-count'>0</span>

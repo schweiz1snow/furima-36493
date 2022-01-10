@@ -9,8 +9,10 @@ class BuyerAddress
     validates :phone_number, format: {with: /\A[0-9]+\z/i, message: "is invalid. Input half-width characters."}
   end
 
-  validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
+  validates :postal_code, presence: true, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
   validates :prefecture_id, numericality: {other_than: 0, message: "can't be blank"}
+  validates :house_number, presence: true
+  validates :token, presence: true
 
   def save
     # 購入者情報を保存し、変数buyerに代入する

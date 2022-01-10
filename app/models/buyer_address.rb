@@ -1,6 +1,6 @@
 class BuyerAddress
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :buyer_id, :user_id, :item_id
+  attr_accessor :postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :buyer_id, :user_id, :item_id, :token
 
   with_options presence: true do
     # ひらがな、カタカナ、漢字のみ許可する

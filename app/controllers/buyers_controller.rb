@@ -1,7 +1,7 @@
 class BuyersController < ApplicationController
+  before_action :set_item, only: [:index, :create]
 
   def index
-    @item = Item.find(params[:item_id])
     if user_signed_in?
       if current_user.id != @item.user_id && @item.buyer.present?
         redirect_to root_path
@@ -22,10 +22,10 @@ class BuyersController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id]) #下記のbuyer_paramsのitem_idで@itemが必要なので、定義するのを忘れずに
+    #buyer_paramsのitem_idで@itemが必要なので、定義するのを忘れずに
     @buyer_address = BuyerAddress.new(buyer_params)
     if @buyer_address.valid?
-      Payjp.api_key = "sk_test_9255989b40957f515aec0463"  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵
       Payjp::Charge.create(
         amount: @item.price,  # 商品の値段 
         #ここは@itemをうまく使う。
@@ -42,7 +42,11 @@ class BuyersController < ApplicationController
   private
 
   def buyer_params #ここは保存するための値を許可する部分（＝バリデーションという篩にかけるところ）
-    params.require(:buyer_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number, :buyer_id).merge(item_id: @item.id, user_id: current_user.id, token: params[:token])
+    params.require(:buyer_address).permit(:postal_code, :prefecture_id, :city, :house_number, :building_name, :phone_number).merge(item_id: @item.id, user_id: current_user.id, token: params[:token])
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
   end
 
 end

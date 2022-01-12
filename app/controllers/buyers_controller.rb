@@ -2,8 +2,19 @@ class BuyersController < ApplicationController
 
   def index
     @item = Item.find(params[:item_id])
-    # ネストすることでルーティングが変わるので注意
-    @buyer_address = BuyerAddress.new
+    if user_signed_in?
+      if current_user.id != @item.user_id && @item.buyer.present?
+        redirect_to root_path
+      elsif current_user.id == @item.user_id
+        redirect_to root_path
+      else
+        @item = Item.find(params[:item_id])
+        # ネストすることでルーティングが変わるので注意
+        @buyer_address = BuyerAddress.new
+      end
+    else
+      redirect_to root_path
+    end
   end
 
   def new

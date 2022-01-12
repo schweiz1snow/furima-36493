@@ -8,8 +8,6 @@ class BuyersController < ApplicationController
       elsif current_user.id == @item.user_id
         redirect_to root_path
       else
-        @item = Item.find(params[:item_id])
-        # ネストすることでルーティングが変わるので注意
         @buyer_address = BuyerAddress.new
       end
     else

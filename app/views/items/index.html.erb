@@ -4,17 +4,17 @@
   <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
   <div class='title-contents'>
     <h2 class='service-title'>
-      人生を変えるフリマアプリ
+      リンゴ農家にわちゃん
     </h2>
     <p class='service-explain'>
-      FURIMAはだれでもかんたんに出品・購入できる
+      信州安曇野で農業やってます
     </p>
     <p class='service-explain'>
-      フリマアプリです
+      ↓最新情報はコチラ
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("instagramlogo.png", class:"apple-btn"), "https://www.instagram.com/niwayamafarm/" %>
+      <%= link_to image_tag("facebooklogo.png", class:"google-btn"), "https://www.facebook.com/niwayamafarm" %>
     </div>
   </div>
   <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
@@ -22,40 +22,40 @@
   <%# FURIMAが選ばれる3つの理由部分 %>
   <div class='select-reason-contents'>
     <h2 class='title'>
-      FURIMAが選ばれる3つの理由
+      にわやまふぁーむとは
     </h2>
     <ul class='reason-lists'>
       <li class='list'>
-        <%= image_tag "furima-intro01.png", class:"list-pict" %>
+        <%= image_tag "kaobackangle.jpeg", class:"list-pict" %>
         <span class='reason-list-number'>1</span>
         <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>3分</span>
-          ですぐに出品
+          <span class='reason-list-blue-text'>一人</span>
+          で農業
         </h3>
         <p class='reason-list-description'>
-          スマホで入力するだけで簡単に出品できる！
+          2020年より新規就農してこじんまりとやってます
         </p>
       </li>
       <li class='list'>
-        <%= image_tag "furima-intro02.png", class:"list-pict" %>
+        <%= image_tag "meigetutree.jpg", class:"list-pict" %>
         <span class='reason-list-number'>2</span>
         <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>シンプル</span>
-          で使いやすい
+          <span class='reason-list-blue-text'>リンゴ</span>
+          育ててます
         </h3>
         <p class='reason-list-description'>
-          めんどくさい入力は必要なく、検索も購入もスムーズ！
+          品種：秋映,シナノスイート,名月,ふじ
         </p>
       </li>
       <li class='list'>
-        <%= image_tag "furima-intro03.png", class:"list-pict" %>
+        <%= image_tag "applebox.jpg", class:"list-pict" %>
         <span class='reason-list-number'>3</span>
         <h3 class='reason-list-text'>
-          手数料
-          <span class='reason-list-blue-text'>業界最安</span>
+          <span class='reason-list-blue-text'>発送</span>
+          やってます
         </h3>
         <p class='reason-list-description'>
-          10%でお得に出品&購入！
+          各品種5kg箱、ジュース（3,6,12本）を扱ってます
         </p>
       </li>
     </ul>
@@ -77,8 +77,8 @@
       ほしかったあの商品に出会えるかもしれません。
     </p>
     <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+      <%= link_to image_tag("instagramlogo.png", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("facebooklogo.png", class:"google-btn"), "#" %>
     </div>
   </div>
   <%# /画面中央の「会員数日本一位」帯部分 %>
@@ -122,9 +122,9 @@
 
   <%# 商品一覧 %>
   <div class='item-contents'>
-    <h2 class='title'>ピックアップカテゴリー</h2>
+    <h2 class='title'>商品一覧</h2>
     <div class="subtitle" >
-      新規投稿商品
+      うまいよ！
     </div>
     <ul class='item-lists'>
      <% @item.each do |item| %>
